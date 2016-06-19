@@ -10,10 +10,10 @@ extern "C" {
 /*
  * Class:     tdes_TDES
  * Method:    pruebaConexion
- * Signature: ()V
+ * Signature: (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_tdes_TDES_pruebaConexion
-  (JNIEnv *, jobject);
+  (JNIEnv *, jobject, jstring, jstring, jstring, jstring, jstring);
 
 #ifdef __cplusplus
 }
