@@ -8,6 +8,7 @@ package tdes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -25,7 +26,6 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         super("Triple DES");
         setBounds(300,110,500,500);
         initComponents();
-        
         tdes = new TDES();
         
     }
@@ -289,7 +289,7 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
     // End of variables declaration//GEN-END:variables
 
     private TDES tdes;
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == jmISalir){
@@ -305,6 +305,7 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
                 System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
 
             }
+          
         }
         else if(e.getSource() == jmILlaveManual){
             String inputValue = JOptionPane.showInputDialog("Escriba un valor");

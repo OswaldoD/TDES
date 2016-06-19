@@ -17,6 +17,11 @@ public class TDES {
     private String key;
     private String OutputFile;
 
+    
+    public TDES(){
+        
+    }
+    
     /**
      * @return the InputFile
      */
