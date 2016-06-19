@@ -35,162 +35,194 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
     private void initComponents() {
 
         jMenuItem2 = new javax.swing.JMenuItem();
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        container = new javax.swing.JPanel();
+        txtLlave = new javax.swing.JTextField();
+        lblLlave = new javax.swing.JLabel();
+        lblArchivo = new javax.swing.JLabel();
+        btnDesencriptar = new javax.swing.JButton();
+        btnEncriptar = new javax.swing.JButton();
+        tbtnHexa = new javax.swing.JRadioButton();
+        txtArchivoEntrada = new javax.swing.JTextField();
+        lblSalida = new javax.swing.JLabel();
+        txtArchivoSalida = new javax.swing.JTextField();
+        btnCambiar = new javax.swing.JButton();
+        jMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jmiLoad = new javax.swing.JMenuItem();
+        jmILoad = new javax.swing.JMenuItem();
         jmISalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmILlaveManual = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(java.awt.Color.white);
-        jPanel1.setLayout(null);
+        container.setBackground(java.awt.Color.white);
+        container.setLayout(null);
 
-        jTextField1.setText("Ninguna");
-        jTextField1.setEnabled(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtLlave.setText("Ninguna");
+        txtLlave.setEnabled(false);
+        txtLlave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtLlaveActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Llave");
+        lblLlave.setText("Llave");
 
-        jLabel2.setText("Texto");
+        lblArchivo.setText("Archivo");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane1.setViewportView(jTextArea2);
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDesencriptar.setText("Desencriptar");
+        btnDesencriptar.addActionListener(this);
+        btnDesencriptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDesencriptarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEncriptar.setText("Encriptar");
+        btnEncriptar.addActionListener(this);
+        btnEncriptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnEncriptarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        tbtnHexa.setText("hexadecimal");
+        tbtnHexa.addActionListener(this);
+
+        txtArchivoEntrada.setText("Ruta");
+        txtArchivoEntrada.setEnabled(false);
+
+        lblSalida.setText("Salida");
+
+        txtArchivoSalida.setText("Ruta");
+        txtArchivoSalida.setEnabled(false);
+
+        btnCambiar.setText("Cambiar");
+        btnCambiar.addActionListener(this);
+
+        javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
+        container.setLayout(containerLayout);
+        containerLayout.setHorizontalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnEncriptar)
+                .addGap(65, 65, 65)
+                .addComponent(btnDesencriptar)
+                .addGap(94, 94, 94))
+            .addGroup(containerLayout.createSequentialGroup()
+                .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(containerLayout.createSequentialGroup()
+                        .addGap(198, 198, 198)
+                        .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtArchivoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(containerLayout.createSequentialGroup()
+                                .addComponent(txtLlave, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(tbtnHexa))
+                            .addGroup(containerLayout.createSequentialGroup()
+                                .addComponent(txtArchivoSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCambiar))))
+                    .addGroup(containerLayout.createSequentialGroup()
                         .addGap(104, 104, 104)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(480, 480, 480)
-                        .addComponent(jButton2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(jButton1)))
-                .addContainerGap(109, Short.MAX_VALUE))
+                        .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblArchivo)
+                            .addComponent(lblLlave)
+                            .addComponent(lblSalida))))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        containerLayout.setVerticalGroup(
+            containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(containerLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(jLabel1)
+                .addComponent(lblLlave)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(jButton2)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel2)
-                .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLlave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tbtnHexa))
+                .addGap(55, 55, 55)
+                .addComponent(lblArchivo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtArchivoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(lblSalida)
+                .addGap(3, 3, 3)
+                .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtArchivoSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCambiar))
+                .addGap(49, 49, 49)
+                .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEncriptar)
+                    .addComponent(btnDesencriptar))
+                .addGap(34, 34, 34))
         );
 
         jMenu1.setText("File");
 
-        jmiLoad.setText("Cargar Archivo");
-        jMenu1.add(jmiLoad);
+        jmILoad.setText("Cargar Archivo");
+        jmILoad.addActionListener(this);
+        jMenu1.add(jmILoad);
 
         jmISalir.setText("Salir");
         jmISalir.addActionListener(this);
         jMenu1.add(jmISalir);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar.add(jMenu1);
 
         jMenu2.setText("Llave");
 
         jMenu3.setText("Asignar Llave");
 
-        jMenuItem1.setText("Manual");
-        jMenu3.add(jMenuItem1);
+        jmILlaveManual.setText("Manual");
+        jmILlaveManual.addActionListener(this);
+        jMenu3.add(jmILlaveManual);
 
         jMenuItem3.setText("Desde Archivo");
+        jMenuItem3.addActionListener(this);
         jMenu3.add(jMenuItem3);
-        jMenuItem3.getAccessibleContext().setAccessibleName("dsdArchivo");
+        jMenuItem3.getAccessibleContext().setAccessibleName("");
 
         jMenu2.add(jMenu3);
         jMenu3.getAccessibleContext().setAccessibleName("asgLlave");
 
-        jMenuBar1.add(jMenu2);
-        jMenu2.getAccessibleContext().setAccessibleName("Llave");
+        jMenuBar.add(jMenu2);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtLlaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLlaveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtLlaveActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDesencriptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesencriptarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnDesencriptarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnEncriptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncriptarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnEncriptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,23 +261,26 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnCambiar;
+    private javax.swing.JButton btnDesencriptar;
+    private javax.swing.JButton btnEncriptar;
+    private javax.swing.JPanel container;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JMenuItem jmILlaveManual;
+    private javax.swing.JMenuItem jmILoad;
     private javax.swing.JMenuItem jmISalir;
-    private javax.swing.JMenuItem jmiLoad;
+    private javax.swing.JLabel lblArchivo;
+    private javax.swing.JLabel lblLlave;
+    private javax.swing.JLabel lblSalida;
+    private javax.swing.JRadioButton tbtnHexa;
+    private javax.swing.JTextField txtArchivoEntrada;
+    private javax.swing.JTextField txtArchivoSalida;
+    private javax.swing.JTextField txtLlave;
     // End of variables declaration//GEN-END:variables
 
     @Override
