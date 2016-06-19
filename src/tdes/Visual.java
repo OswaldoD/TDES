@@ -8,6 +8,9 @@ package tdes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -22,6 +25,8 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         super("Triple DES");
         setBounds(300,110,500,500);
         initComponents();
+        
+        tdes = new TDES();
         
     }
 
@@ -283,30 +288,59 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JTextField txtLlave;
     // End of variables declaration//GEN-END:variables
 
+    private TDES tdes;
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == jmISalir){
             dispose();
         }
         else if(e.getSource() == jmILoad){
-            
+            JFileChooser chooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("file", "txt", "out");
+            chooser.setFileFilter(filter);
+            int returnVal = chooser.showOpenDialog(this);
+            if(returnVal == JFileChooser.APPROVE_OPTION) {
+                System.out.println("You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
+                System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
+
+            }
         }
         else if(e.getSource() == jmILlaveManual){
-            
+            String inputValue = JOptionPane.showInputDialog("Escriba un valor");
+            System.out.println("Llave: " + inputValue);
+
         }
         else if(e.getSource() == jmIDesdeArchivo){
+            JFileChooser chooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("file", "txt", "out", "key");
+            chooser.setFileFilter(filter);
+            int returnVal = chooser.showOpenDialog(this);
+            String ruta = chooser.getSelectedFile().getAbsolutePath();
+            
+            if(returnVal == JFileChooser.APPROVE_OPTION) {
+                System.out.println("You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
+                System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
+                
+            }
+            FileManager file = new FileManager();
+            String llave = file.loadFile(ruta);
+            System.out.println(llave);
             
         }
-        else if(e.getSource() == rbtnHexa){
-            
+        else if(e.getSource() == rbtnHexa){            
+            System.out.println("Hexa -x");
         }
         else if(e.getSource() == btnCambiar){
-            
+            String inputValue = JOptionPane.showInputDialog("Escriba uel nombre del archivo");
+            System.out.println("Nombre: " + inputValue);
         }
         else if(e.getSource() == btnEncriptar){
+            System.out.println("Enviar parametros para encriptar");
             
         }
         else if(e.getSource() == btnDesencriptar){
+            System.out.println("Enviar parametros para desencriptar");
             
         }
 
