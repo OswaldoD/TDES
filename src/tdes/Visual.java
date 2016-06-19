@@ -338,6 +338,7 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         }
         else if(e.getSource() == btnEncriptar){
             System.out.println("Enviar parametros para encriptar");
+            tdes.pruebaConexion();
             
         }
         else if(e.getSource() == btnDesencriptar){

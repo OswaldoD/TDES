@@ -18,10 +18,14 @@ public class TDES {
     private String OutputFile;
 
     
+    public native void pruebaConexion();
+    static {
+        System.loadLibrary("conexion");
+    }
+    
     public TDES(){
         
     }
-    
     /**
      * @return the InputFile
      */
