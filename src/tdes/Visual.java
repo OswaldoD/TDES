@@ -41,7 +41,7 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         lblArchivo = new javax.swing.JLabel();
         btnDesencriptar = new javax.swing.JButton();
         btnEncriptar = new javax.swing.JButton();
-        tbtnHexa = new javax.swing.JRadioButton();
+        rbtnHexa = new javax.swing.JRadioButton();
         txtArchivoEntrada = new javax.swing.JTextField();
         lblSalida = new javax.swing.JLabel();
         txtArchivoSalida = new javax.swing.JTextField();
@@ -53,7 +53,7 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jmILlaveManual = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jmIDesdeArchivo = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -90,8 +90,8 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
             }
         });
 
-        tbtnHexa.setText("hexadecimal");
-        tbtnHexa.addActionListener(this);
+        rbtnHexa.setText("hexadecimal");
+        rbtnHexa.addActionListener(this);
 
         txtArchivoEntrada.setText("Ruta");
         txtArchivoEntrada.setEnabled(false);
@@ -123,7 +123,7 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
                             .addGroup(containerLayout.createSequentialGroup()
                                 .addComponent(txtLlave, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(tbtnHexa))
+                                .addComponent(rbtnHexa))
                             .addGroup(containerLayout.createSequentialGroup()
                                 .addComponent(txtArchivoSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -144,7 +144,7 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
                 .addGap(18, 18, 18)
                 .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLlave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tbtnHexa))
+                    .addComponent(rbtnHexa))
                 .addGap(55, 55, 55)
                 .addComponent(lblArchivo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -182,10 +182,10 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         jmILlaveManual.addActionListener(this);
         jMenu3.add(jmILlaveManual);
 
-        jMenuItem3.setText("Desde Archivo");
-        jMenuItem3.addActionListener(this);
-        jMenu3.add(jMenuItem3);
-        jMenuItem3.getAccessibleContext().setAccessibleName("");
+        jmIDesdeArchivo.setText("Desde Archivo");
+        jmIDesdeArchivo.addActionListener(this);
+        jMenu3.add(jmIDesdeArchivo);
+        jmIDesdeArchivo.getAccessibleContext().setAccessibleName("");
 
         jMenu2.add(jMenu3);
         jMenu3.getAccessibleContext().setAccessibleName("asgLlave");
@@ -270,14 +270,14 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jmIDesdeArchivo;
     private javax.swing.JMenuItem jmILlaveManual;
     private javax.swing.JMenuItem jmILoad;
     private javax.swing.JMenuItem jmISalir;
     private javax.swing.JLabel lblArchivo;
     private javax.swing.JLabel lblLlave;
     private javax.swing.JLabel lblSalida;
-    private javax.swing.JRadioButton tbtnHexa;
+    private javax.swing.JRadioButton rbtnHexa;
     private javax.swing.JTextField txtArchivoEntrada;
     private javax.swing.JTextField txtArchivoSalida;
     private javax.swing.JTextField txtLlave;
@@ -286,8 +286,28 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == jmISalir){
-            System.out.println("Numero " + e.getID());
             dispose();
+        }
+        else if(e.getSource() == jmILoad){
+            
+        }
+        else if(e.getSource() == jmILlaveManual){
+            
+        }
+        else if(e.getSource() == jmIDesdeArchivo){
+            
+        }
+        else if(e.getSource() == rbtnHexa){
+            
+        }
+        else if(e.getSource() == btnCambiar){
+            
+        }
+        else if(e.getSource() == btnEncriptar){
+            
+        }
+        else if(e.getSource() == btnDesencriptar){
+            
         }
 
       //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

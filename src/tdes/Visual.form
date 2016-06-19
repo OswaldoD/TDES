@@ -53,7 +53,7 @@
                     <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jmILlaveManual.addActionListener(this);"/>
                   </AuxValues>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+                <MenuItem class="javax.swing.JMenuItem" name="jmIDesdeArchivo">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Desde Archivo"/>
                   </Properties>
@@ -61,7 +61,7 @@
                     <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
                   </AccessibilityProperties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jMenuItem3.addActionListener(this);"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jmIDesdeArchivo.addActionListener(this);"/>
                   </AuxValues>
                 </MenuItem>
               </SubComponents>
@@ -139,7 +139,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="txtLlave" min="-2" pref="190" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="tbtnHexa" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbtnHexa" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="txtArchivoSalida" min="-2" pref="190" max="-2" attributes="0"/>
@@ -169,7 +169,7 @@
                   <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtLlave" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="tbtnHexa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rbtnHexa" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                   <Component id="lblArchivo" min="-2" max="-2" attributes="0"/>
@@ -234,12 +234,12 @@
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btnEncriptar.addActionListener(this);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="tbtnHexa">
+        <Component class="javax.swing.JRadioButton" name="rbtnHexa">
           <Properties>
             <Property name="text" type="java.lang.String" value="hexadecimal"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tbtnHexa.addActionListener(this);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="rbtnHexa.addActionListener(this);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtArchivoEntrada">
