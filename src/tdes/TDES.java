@@ -16,9 +16,10 @@ public class TDES {
     private String InputFile;
     private String key;
     private String OutputFile;
+    private String tipo_llave;
 
     
-    public native void pruebaConexion();
+    public native void pruebaConexion(String opcion, String nombreArchivo, String tipo_llave, String archivoSalida, String llave);
     static {
         System.loadLibrary("conexion");
     }
@@ -66,6 +67,20 @@ public class TDES {
      */
     public void setOutputFile(String OutputFile) {
         this.OutputFile = OutputFile;
+    }
+
+    /**
+     * @return the tipo_llave
+     */
+    public String getTipo_llave() {
+        return tipo_llave;
+    }
+
+    /**
+     * @param tipo_llave the tipo_llave to set
+     */
+    public void setTipo_llave(String tipo_llave) {
+        this.tipo_llave = tipo_llave;
     }
     
 }

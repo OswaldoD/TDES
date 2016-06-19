@@ -25,9 +25,12 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
     public Visual() {
         super("Triple DES");
         setBounds(300,110,500,500);
+        setResizable(false);
         initComponents();
         tdes = new TDES();
-        
+        tdes.setInputFile(txtArchivoEntrada.getText());
+        tdes.setOutputFile(txtArchivoSalida.getText());
+        tdes.setKey(txtLlave.getText());
     }
 
     /**
@@ -65,9 +68,12 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         container.setBackground(java.awt.Color.white);
+        container.setForeground(new java.awt.Color(254, 254, 254));
         container.setLayout(null);
 
+        txtLlave.setForeground(new java.awt.Color(83, 83, 83));
         txtLlave.setText("Ninguna");
+        txtLlave.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         txtLlave.setEnabled(false);
         txtLlave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +83,7 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
 
         lblLlave.setText("Llave");
 
-        lblArchivo.setText("Archivo");
+        lblArchivo.setText("Archivo Entrada");
 
         btnDesencriptar.setText("Desencriptar");
         btnDesencriptar.addActionListener(this);
@@ -99,11 +105,13 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         rbtnHexa.addActionListener(this);
 
         txtArchivoEntrada.setText("Ruta");
+        txtArchivoEntrada.setDisabledTextColor(new java.awt.Color(10, 5, 0));
         txtArchivoEntrada.setEnabled(false);
 
-        lblSalida.setText("Salida");
+        lblSalida.setText("Archivo Salida");
 
         txtArchivoSalida.setText("Ruta");
+        txtArchivoSalida.setDisabledTextColor(new java.awt.Color(1, 1, 1));
         txtArchivoSalida.setEnabled(false);
 
         btnCambiar.setText("Cambiar");
@@ -113,33 +121,33 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         container.setLayout(containerLayout);
         containerLayout.setHorizontalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnEncriptar)
-                .addGap(65, 65, 65)
-                .addComponent(btnDesencriptar)
-                .addGap(94, 94, 94))
             .addGroup(containerLayout.createSequentialGroup()
                 .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(containerLayout.createSequentialGroup()
                         .addGap(198, 198, 198)
                         .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtArchivoEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(containerLayout.createSequentialGroup()
-                                .addComponent(txtLlave, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rbtnHexa))
-                            .addGroup(containerLayout.createSequentialGroup()
-                                .addComponent(txtArchivoSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCambiar))))
+                            .addComponent(txtArchivoEntrada)
+                            .addComponent(txtLlave, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtArchivoSalida))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbtnHexa, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerLayout.createSequentialGroup()
+                                .addComponent(btnCambiar)
+                                .addGap(10, 10, 10))))
                     .addGroup(containerLayout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblArchivo)
                             .addComponent(lblLlave)
                             .addComponent(lblSalida))))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerLayout.createSequentialGroup()
+                .addGap(0, 243, Short.MAX_VALUE)
+                .addComponent(btnEncriptar)
+                .addGap(65, 65, 65)
+                .addComponent(btnDesencriptar)
+                .addGap(179, 179, 179))
         );
         containerLayout.setVerticalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,6 +272,32 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
             }
         });
     }
+    
+    private void updateTextFields(){
+        txtArchivoEntrada.setText(tdes.getInputFile());
+        
+        txtArchivoSalida.setText(tdes.getOutputFile());
+        
+        txtLlave.setText(tdes.getKey());
+        
+    }
+    private void callTDES(String opcion, String tipo_llave){
+        /**
+         * 
+         * ./tdes -e /home/phoenix/Documentos/file.txt -x -o /home/phoenix/Documentos/salida.txt
+         * ./tdes -d /home/phoenix/Documentos/salida.txt -x -o /home/phoenix/Documentos/descripted.txt
+         * 
+         **/
+        
+      /*  if(tdes.getInputFile().equals("Ninguna") && 
+           tdes.getInputFile().equals("Ninguna") &&
+           tdes.getInputFile().equals("Ninguna")){
+           */ 
+            tdes.pruebaConexion(opcion, tdes.getInputFile(), tipo_llave, tdes.getOutputFile(), tdes.getKey());
+            
+      //  }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCambiar;
@@ -303,43 +337,49 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
             if(returnVal == JFileChooser.APPROVE_OPTION) {
                 System.out.println("You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
                 System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
-
+                tdes.setInputFile(chooser.getSelectedFile().getAbsolutePath());
+                updateTextFields();
             }
           
         }
         else if(e.getSource() == jmILlaveManual){
             String inputValue = JOptionPane.showInputDialog("Escriba un valor");
             System.out.println("Llave: " + inputValue);
+            
 
         }
         else if(e.getSource() == jmIDesdeArchivo){
             JFileChooser chooser = new JFileChooser();
             FileNameExtensionFilter filter = new FileNameExtensionFilter("file", "txt", "out", "key");
             chooser.setFileFilter(filter);
-            int returnVal = chooser.showOpenDialog(this);
-            String ruta = chooser.getSelectedFile().getAbsolutePath();
-            
+            int returnVal = chooser.showOpenDialog(this);            
             if(returnVal == JFileChooser.APPROVE_OPTION) {
                 System.out.println("You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
                 System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
-                
+                FileManager file = new FileManager();
+                String llave = file.loadFile(chooser.getSelectedFile().getAbsolutePath());
+                System.out.println(llave);
+                tdes.setKey(llave);
+                updateTextFields();
             }
-            FileManager file = new FileManager();
-            String llave = file.loadFile(ruta);
-            System.out.println(llave);
-            
         }
         else if(e.getSource() == rbtnHexa){            
             System.out.println("Hexa -x");
         }
         else if(e.getSource() == btnCambiar){
-            String inputValue = JOptionPane.showInputDialog("Escriba uel nombre del archivo");
-            System.out.println("Nombre: " + inputValue);
+          ///  String inputValue = JOptionPane.showInputDialog("Escriba el nombre del archivo");
+            JFileChooser chooser = new JFileChooser();
+            int returnVal = chooser.showSaveDialog(this);
+            if(returnVal == JFileChooser.APPROVE_OPTION){
+                System.out.println("Nombre: " + chooser.getSelectedFile().getAbsolutePath());
+                tdes.setOutputFile(chooser.getSelectedFile().getAbsolutePath());
+                updateTextFields();
+            }
         }
         else if(e.getSource() == btnEncriptar){
             System.out.println("Enviar parametros para encriptar");
-            tdes.pruebaConexion();
-            
+            //tdes.pruebaConexion("file.txt");
+            callTDES("-e", "-x");
         }
         else if(e.getSource() == btnDesencriptar){
             System.out.println("Enviar parametros para desencriptar");
