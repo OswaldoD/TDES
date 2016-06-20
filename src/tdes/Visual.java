@@ -8,7 +8,6 @@ package tdes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -281,7 +280,7 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         txtLlave.setText(tdes.getKey());
         
     }
-    private void callTDES(String opcion, String tipo_llave){
+    private int callTDES(String opcion){
         /**
          * 
          * ./tdes -e /home/phoenix/Documentos/file.txt -x -o /home/phoenix/Documentos/salida.txt
@@ -293,9 +292,24 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
            tdes.getInputFile().equals("Ninguna") &&
            tdes.getInputFile().equals("Ninguna")){
            */ 
-            tdes.pruebaConexion(opcion, tdes.getInputFile(), tipo_llave, tdes.getOutputFile(), tdes.getKey());
-            
-      //  }
+      String tipo_llave = " ";
+      if(rbtnHexa.isSelected()){
+          tipo_llave = "-x";
+      }
+      else{
+          tipo_llave = " ";
+      }
+      
+      return tdes.pruebaConexion(opcion, tdes.getInputFile(), tipo_llave, tdes.getOutputFile(), tdes.getKey());
+    }
+    private void cleanInterface(){
+        tdes = new TDES();
+        
+        tdes.setInputFile("Ruta");
+        tdes.setOutputFile("Ruta");
+        tdes.setKey("Ninguna");
+        
+        updateTextFields();
         
     }
 
@@ -335,8 +349,8 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
             chooser.setFileFilter(filter);
             int returnVal = chooser.showOpenDialog(this);
             if(returnVal == JFileChooser.APPROVE_OPTION) {
-                System.out.println("You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
-                System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
+           //     System.out.println("You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
+            //    System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
                 tdes.setInputFile(chooser.getSelectedFile().getAbsolutePath());
                 updateTextFields();
             }
@@ -354,8 +368,8 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
             chooser.setFileFilter(filter);
             int returnVal = chooser.showOpenDialog(this);            
             if(returnVal == JFileChooser.APPROVE_OPTION) {
-                System.out.println("You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
-                System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
+             //   System.out.println("You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
+            //    System.out.println("You chose to open this file: " + chooser.getSelectedFile().getName());
                 FileManager file = new FileManager();
                 String llave = file.loadFile(chooser.getSelectedFile().getAbsolutePath());
                 System.out.println(llave);
@@ -364,14 +378,14 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
             }
         }
         else if(e.getSource() == rbtnHexa){            
-            System.out.println("Hexa -x");
+            //System.out.println("Hexa -x");
         }
         else if(e.getSource() == btnCambiar){
           ///  String inputValue = JOptionPane.showInputDialog("Escriba el nombre del archivo");
             JFileChooser chooser = new JFileChooser();
             int returnVal = chooser.showSaveDialog(this);
             if(returnVal == JFileChooser.APPROVE_OPTION){
-                System.out.println("Nombre: " + chooser.getSelectedFile().getAbsolutePath());
+              //  System.out.println("Nombre: " + chooser.getSelectedFile().getAbsolutePath());
                 tdes.setOutputFile(chooser.getSelectedFile().getAbsolutePath());
                 updateTextFields();
             }
@@ -379,11 +393,18 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         else if(e.getSource() == btnEncriptar){
             System.out.println("Enviar parametros para encriptar");
             //tdes.pruebaConexion("file.txt");
-            callTDES("-e", "-x");
+            int y = callTDES("-e");
+            
+           // System.out.println("Y me trae esto: " + y);
+           // aqui va un mensaje de aceptar
+           cleanInterface();
         }
         else if(e.getSource() == btnDesencriptar){
             System.out.println("Enviar parametros para desencriptar");
-            
+            int y = callTDES("d");
+          //  System.out.println("Y me trae esto: " + y);
+          // aqui va un mensaje de aceptar
+            cleanInterface();
         }
 
       //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

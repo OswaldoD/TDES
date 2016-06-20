@@ -19,7 +19,7 @@ public class TDES {
     private String tipo_llave;
 
     
-    public native void pruebaConexion(String opcion, String nombreArchivo, String tipo_llave, String archivoSalida, String llave);
+    public native int pruebaConexion(String opcion, String nombreArchivo, String tipo_llave, String archivoSalida, String llave);
     static {
         System.loadLibrary("conexion");
     }

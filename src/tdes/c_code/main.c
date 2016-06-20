@@ -44,8 +44,18 @@ int GetAllArgs(int argc,char *argv[], int *m, char *chp,
 void TDESengine(int m,char *k,FILE *InputFile, FILE *OutputFile);
 void CloseFiles(FILE *f1, FILE *f2);
 
-int main(int argc, char *argv[])
+
+int main(int argc, char *argv[], char *keyImported)
 {
+	printf("%d", argc);
+	printf("    ");
+	int h = 0;
+	while(h < argc){
+		printf(argv[h]);
+		printf(" ");
+		h++;
+	}
+	
 	int  mode; // mode = 1: encryption; mode = 0: decryption
 	char TDESkey[KEYLENGTH];
 	FILE *InputFile, *OutputFile;
@@ -56,12 +66,17 @@ int main(int argc, char *argv[])
 	
 	
 	kp = &TDESkey[0];
+	//kp = keyImported;
 	
 	if ((status = GetAllArgs(argc,&argv[0],&mode,kp,&fileptr1,&fileptr2))){
 		return status;
 	} else {
 		InputFile = fileptr1;
 		OutputFile = fileptr2;
+		
+		//printf("Llave : ");
+		//printf(kp);
+		//printf("\n");
 		
 		TDESengine(mode,kp,InputFile,OutputFile);
 		
