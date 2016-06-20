@@ -63,7 +63,7 @@ JNIEXPORT int JNICALL Java_tdes_TDES_pruebaConexion
 	if(strcmp(typeKey, "-x") == 0){ main(6, argv, key); }
 	else{main(5, argv, key);}
     
-
+/*agregar return para que java despliege mensajes de exito*/
     /*DON'T FORGET THIS LINE!!!*/
     (*env)->ReleaseStringUTFChars(env, opcion, option);
     (*env)->ReleaseStringUTFChars(env, nombreArchivo, fileInput);
