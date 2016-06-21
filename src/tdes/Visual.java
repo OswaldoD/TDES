@@ -400,12 +400,12 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
                System.out.println("Enviar parametros para encriptar");
                int y = callTDES("-e");
                if (y == 0) {
-                   JOptionPane.showMessageDialog(this, "Encriptación Exitosa", "La encriptación ha concluido exitosamente", JOptionPane.INFORMATION_MESSAGE);
+                   JOptionPane.showMessageDialog(this, "La encriptación ha concluido exitosamente","Encriptación Exitosa", JOptionPane.INFORMATION_MESSAGE);
                    // Mensaje de exito
                    cleanInterface();
                } else {
                    // Mensaje de error
-                   JOptionPane.showMessageDialog(this, "Encriptación fallida", "La encriptación no se ha podido completar, revise los parámetros ingresados e intente nuevamente", JOptionPane.ERROR_MESSAGE);
+                   JOptionPane.showMessageDialog(this, "La encriptación no se ha podido completar, revise los parámetros ingresados e intente nuevamente", "Encriptación fallida", JOptionPane.ERROR_MESSAGE);
                }
            }
         }
