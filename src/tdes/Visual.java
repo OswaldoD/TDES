@@ -61,6 +61,8 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         jMenu3 = new javax.swing.JMenu();
         jmILlaveManual = new javax.swing.JMenuItem();
         jmIDesdeArchivo = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jmIAcercaDe = new javax.swing.JMenuItem();
 
         jMenuItem2.setText("jMenuItem2");
 
@@ -174,7 +176,7 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
                 .addGap(34, 34, 34))
         );
 
-        jMenu1.setText("File");
+        jMenu1.setText("Archivo");
 
         jmILoad.setText("Cargar Archivo");
         jmILoad.addActionListener(this);
@@ -203,6 +205,19 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         jMenu3.getAccessibleContext().setAccessibleName("asgLlave");
 
         jMenuBar.add(jMenu2);
+
+        jMenu4.setText("Ayuda");
+
+        jmIAcercaDe.setText("Acerca de");
+        jmIAcercaDe.addActionListener(this);
+        jmIAcercaDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmIAcercaDeActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jmIAcercaDe);
+
+        jMenuBar.add(jMenu4);
 
         setJMenuBar(jMenuBar);
 
@@ -235,6 +250,10 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
     private void btnEncriptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncriptarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEncriptarActionPerformed
+
+    private void jmIAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmIAcercaDeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmIAcercaDeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,8 +340,10 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jmIAcercaDe;
     private javax.swing.JMenuItem jmIDesdeArchivo;
     private javax.swing.JMenuItem jmILlaveManual;
     private javax.swing.JMenuItem jmILoad;
@@ -380,6 +401,10 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         }
         else if(e.getSource() == rbtnHexa){            
             //System.out.println("Hexa -x");
+        }
+        else if(e.getSource() == jmIAcercaDe ){
+            String mensaje = "Applies Triple DES encryption or decryption to FILE.\nCredits of encrypt-decrypt code to Jorge Vargas Calvo.\nReport bugs to <avargas@itcr.ac.cr>";
+            JOptionPane.showConfirmDialog(this, mensaje, "Acerca de", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
         }
         else if(e.getSource() == btnCambiar){
           ///  String inputValue = JOptionPane.showInputDialog("Escriba el nombre del archivo");
