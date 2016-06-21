@@ -4,14 +4,10 @@
 #include "main.c"
 #include <string.h>
 
-//void pruebaConexion(){
 JNIEXPORT int JNICALL Java_tdes_TDES_pruebaConexion
   (JNIEnv *env, jobject obj, jstring opcion, jstring nombreArchivo, jstring tipo_llave, jstring archivoSalida, jstring llave){
-	  //  (JNIEnv *, jobject, jstring, jstring, jstring, jstring, jstring);
-	  //String opcion, String nombreArchivo, String tipo_llave, String archivoSalida, String llave
-
 	
-	/*Get the native string from javaString*/
+	/* Se obtienen los parametros desde java */
     char *option = (*env)->GetStringUTFChars(env, opcion, 0);
     const char *fileInput = (*env)->GetStringUTFChars(env, nombreArchivo, 0);
     const char *typeKey = (*env)->GetStringUTFChars(env, tipo_llave, 0);
@@ -19,8 +15,8 @@ JNIEXPORT int JNICALL Java_tdes_TDES_pruebaConexion
     char *key = (*env)->GetStringUTFChars(env, llave, 0);
     
 
-    /*Do something with the nativeString*/
-    printf("Hola estoy conectado desde otro lado: ");
+    /* Se hacen las operaciones necesarias con los parametros */
+    printf("codigo de C : ");
     
     printf(option);
     printf("\n");/*
@@ -42,9 +38,9 @@ JNIEXPORT int JNICALL Java_tdes_TDES_pruebaConexion
 	}
 	if(strcmp(option, "d") == 0){
 		argv[1] = "-d";
-		printf("\nEsto guarda : ");
-		printf(argv[1]);
-		printf("\n");
+		//printf("\nEsto guarda : ");
+//printf(argv[1]);
+		//printf("\n");
 	}
     
     if(strcmp(typeKey, "-x") == 0){
@@ -59,17 +55,24 @@ JNIEXPORT int JNICALL Java_tdes_TDES_pruebaConexion
 		 argv[3] = "-o";
 		 argv[4] = fileOutput;	
 	}
+	
+    int resultado;
     
-	if(strcmp(typeKey, "-x") == 0){ main(6, argv, key); }
-	else{main(5, argv, key);}
+	if(strcmp(typeKey, "-x") == 0){ 
+		resultado = main(6, argv, key); 
+	}
+	else{
+		resultado = main(5, argv, key);
+	}
     
-/*agregar return para que java despliege mensajes de exito*/
-    /*DON'T FORGET THIS LINE!!!*/
+
+    /* Limpieza de la memoria, debido que el recolector de basura no se deshace de estos punteros */
     (*env)->ReleaseStringUTFChars(env, opcion, option);
     (*env)->ReleaseStringUTFChars(env, nombreArchivo, fileInput);
 	(*env)->ReleaseStringUTFChars(env, tipo_llave, typeKey);
 	(*env)->ReleaseStringUTFChars(env, archivoSalida, fileOutput);
 	(*env)->ReleaseStringUTFChars(env, llave, key);
 
-	return 2;
+	/* Return para manejar mensajes de exito en java */
+	return resultado;
 }

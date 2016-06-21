@@ -345,8 +345,8 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         }
         else if(e.getSource() == jmILoad){
             JFileChooser chooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("file", "txt", "out");
-            chooser.setFileFilter(filter);
+          //  FileNameExtensionFilter filter = new FileNameExtensionFilter("file", "txt", "out");
+          //  chooser.setFileFilter(filter);
             int returnVal = chooser.showOpenDialog(this);
             if(returnVal == JFileChooser.APPROVE_OPTION) {
            //     System.out.println("You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
@@ -359,13 +359,14 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
         else if(e.getSource() == jmILlaveManual){
             String inputValue = JOptionPane.showInputDialog("Escriba un valor");
             System.out.println("Llave: " + inputValue);
-            
+            tdes.setKey(inputValue);
+            updateTextFields();
 
         }
         else if(e.getSource() == jmIDesdeArchivo){
             JFileChooser chooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("file", "txt", "out", "key");
-            chooser.setFileFilter(filter);
+           // FileNameExtensionFilter filter = new FileNameExtensionFilter("file", "txt", "out", "key");
+          //  chooser.setFileFilter(filter);
             int returnVal = chooser.showOpenDialog(this);            
             if(returnVal == JFileChooser.APPROVE_OPTION) {
              //   System.out.println("You chose to open this file: " + chooser.getSelectedFile().getAbsolutePath());
@@ -391,22 +392,40 @@ public class Visual extends javax.swing.JFrame implements ActionListener{
             }
         }
         else if(e.getSource() == btnEncriptar){
-            System.out.println("Enviar parametros para encriptar");
-            //tdes.pruebaConexion("file.txt");
-            int y = callTDES("-e");
+            int u = JOptionPane.showConfirmDialog(this, "¿Desea encriptar el archivo?", "Confirmación de encriptación", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
             
            // System.out.println("Y me trae esto: " + y);
-           // aqui va un mensaje de aceptar
-           cleanInterface();
+           if(u == 0) {
+               // Se acepta la encriptación
+               System.out.println("Enviar parametros para encriptar");
+               int y = callTDES("-e");
+               if (y == 0) {
+                   JOptionPane.showMessageDialog(this, "Encriptación Exitosa", "La encriptación ha concluido exitosamente", JOptionPane.INFORMATION_MESSAGE);
+                   // Mensaje de exito
+                   cleanInterface();
+               } else {
+                   // Mensaje de error
+                   JOptionPane.showMessageDialog(this, "Encriptación fallida", "La encriptación no se ha podido completar, revise los parámetros ingresados e intente nuevamente", JOptionPane.ERROR_MESSAGE);
+               }
+           }
         }
         else if(e.getSource() == btnDesencriptar){
-            System.out.println("Enviar parametros para desencriptar");
-            int y = callTDES("d");
-          //  System.out.println("Y me trae esto: " + y);
-          // aqui va un mensaje de aceptar
-            cleanInterface();
+           int u = JOptionPane.showConfirmDialog(this, "¿Desea desencriptar el archivo?", "Confirmación de desencriptación", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+           if(u == 0) {
+               // Se acepta la desencriptación
+               System.out.println("Enviar parametros para desencriptar " + u);
+               int y = callTDES("d");
+               // Se acepta la encriptación
+               System.out.println("Enviar parametros para encriptar");
+               if (y == 0) {
+                   // Mensaje de exito
+                   JOptionPane.showMessageDialog(this, "La desencriptación ha concluido exitosamente", "Desencriptación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+                   cleanInterface();
+               } else {
+                   // Mensaje de error
+                   JOptionPane.showMessageDialog(this, "La desencriptación no se ha podido completar, revise los parámetros ingresados e intente nuevamente", "Desencriptación fallida", JOptionPane.ERROR_MESSAGE);
+               }
+           }
         }
-
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
